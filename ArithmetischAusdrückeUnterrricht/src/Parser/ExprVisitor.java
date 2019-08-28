@@ -1,35 +1,25 @@
 package Parser;
 
+import java.util.List;
+
+import Expression.Expression;
 import Expression.Summe;
-import symbols.BracketOpen;
-import symbols.NaturalNumber;
+import symbols.BracketClose;
 import symbols.PlusOp;
+import symbols.Symbol;
 
 public class ExprVisitor extends SymbolVisitor {
-	private ExpressionParser expressionparser;
 	
-	public ExprVisitor(ExpressionParser expressionParser) {
-	super();
-	this.expressionparser = expressionParser;
-	}
-	
-	
-	public void handle(NaturalNumber number) {
-		expressionparser.skip();
-		
-		if (this.expressionparser.getList().isEmpty()) {
-			super.setExpr(number);
-			return;
+	public ExprVisitor(Expression expr, List<Symbol> symbols) {
+		super(expr, symbols);
 		}
-		if(this.expressionparser.getList().get(0) == PlusOp.getInstance()) {
-			this.expressionparser.skip();
-			super.setExpr(new Summe(new ExpressionParser().toExpression(this.expressionparser.getList()), number));}
-		else {
-			this.expressionparser.getList().add(0, number);
-			super.setExpr(new SummenParser().toExpression(this.expressionparser.getList()));
-		}
+	@Override
+	public void handle(PlusOp plusop) {
+		super.skip();
+		super.setExpr(new Summe(super.getExpr(), new ExpressionParser().toExpression(super.getSymbols())));
 	}
-	public void handle(BracketOpen bro) {
-		super.setExpr(new SummenParser().toExpression(this.expressionparser.getList()));
+	public void handle(BracketClose brc) {
+		return;
 	}
-}
+	
+	}

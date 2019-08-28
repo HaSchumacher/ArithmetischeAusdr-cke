@@ -5,13 +5,13 @@ public class Produkt implements Summand {
 	 * Ein Produkt besteht mindestens aus einem Faktor.
 	 * Der Faktor kann mit dem Operator '*' und einem Expression Ausdruck erweitert werden.
 	 **/
-	private Faktor factor2;
-	private Summand summand1;
+	private Expression factor2;
+	private Expression summand1;
 	
-	public Produkt(Faktor factor2, Summand summand1) {
+	public Produkt(Expression expr, Expression expression) {
 		super();
-		this.factor2 = factor2;
-		this.summand1 = summand1;
+		this.factor2 = expr;
+		this.summand1 = expression;
 	}
 
 

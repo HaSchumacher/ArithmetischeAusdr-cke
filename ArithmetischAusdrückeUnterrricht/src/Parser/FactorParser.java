@@ -13,8 +13,7 @@ public class FactorParser extends SymbolParser {
 	 * Er wird von dem SpParser aufgerufen und ruft eventuell den ExpParser auf. 
 	 **/
 	public Expression toExpression(List<Symbol> symbols) {
-		super.setList(symbols);
-		FactorVisitor factorVisitor = new  FactorVisitor(this);
+		FactorVisitor factorVisitor = new  FactorVisitor(null, symbols);
 		symbols.get(0).accept(factorVisitor);
 		return factorVisitor.getExpr();
 	}

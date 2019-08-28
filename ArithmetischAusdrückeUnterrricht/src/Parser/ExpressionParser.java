@@ -3,6 +3,7 @@ package Parser;
 import java.util.List;
 
 import Expression.Expression;
+import symbols.EndofInput;
 import symbols.Symbol;
 
 public class ExpressionParser extends SymbolParser {
@@ -12,8 +13,9 @@ public class ExpressionParser extends SymbolParser {
 	 * Dabei delegiert er die Auswertung auf verschiedene Parser.
 	 **/
 	public Expression toExpression(List<Symbol> symbols) {
-		super.setList(symbols);
-		ExprVisitor expressionvisitor = new ExprVisitor(this);
+		symbols.add( new EndofInput());
+		Expression expr = new SummenParser().toExpression(symbols);
+		ExprVisitor expressionvisitor = new ExprVisitor(expr, symbols);
 		symbols.get(0).accept(expressionvisitor);
 		return expressionvisitor.getExpr(); 
 		}

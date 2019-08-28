@@ -3,6 +3,7 @@ package Parser;
 import java.util.List;
 
 import Expression.Expression;
+import Expression.Produkt;
 import symbols.Symbol;
 
 public class SummenParser extends SymbolParser{
@@ -13,8 +14,8 @@ public class SummenParser extends SymbolParser{
 	 * Der SpParser wird vom ExpParser und ruft den FakParser auf.
 	 **/
 	public Expression toExpression(List<Symbol> symbols) {
-		super.setList(symbols);
-		SummandVisitor summandvisitor = new SummandVisitor(this);
+		Expression expr = new FactorParser().toExpression(symbols);
+		SummandVisitor summandvisitor = new SummandVisitor(expr, symbols);
 		symbols.get(0).accept(summandvisitor);
 		return summandvisitor.getExpr();
 	}

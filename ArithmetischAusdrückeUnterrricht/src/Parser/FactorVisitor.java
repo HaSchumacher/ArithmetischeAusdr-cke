@@ -1,26 +1,35 @@
 package Parser;
 
+import java.util.List;
+
+import Expression.Expression;
+import symbols.BracketClose;
 import symbols.BracketOpen;
 import symbols.NaturalNumber;
+import symbols.Symbol;
 
 public class FactorVisitor extends SymbolVisitor {
-	private FactorParser myParser;
 	
-	public FactorVisitor(FactorParser factorParser) {
-		this.myParser = factorParser;
+	public FactorVisitor(Expression expr, List<Symbol> symbols) {
+		super(expr, symbols);
 	}
+	
 	@Override
 	public void handle(NaturalNumber number) {
-		this.myParser.skip();
-				super.setExpr(number);
+		super.skip();
+		super.setExpr(number);
 	}
 	@Override
 	public
 	void handle (BracketOpen bro) {
-		myParser.skip();
-		super.setExpr(new ExpressionParser().toExpression(this.myParser.getList()));
-		myParser.skip();
-			
+		super.skip();
+		super.setExpr(new ExpressionParser().toExpression(super.getSymbols()));
+		this.checkofBracketclose();
+		}
+
+	private void checkofBracketclose() {
+		if (super.getSymbols().get(0) instanceof BracketClose)  
+			super.skip();
 		}
 		
 	}

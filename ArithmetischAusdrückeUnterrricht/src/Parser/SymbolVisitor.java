@@ -1,16 +1,34 @@
 package Parser;
 
+import java.util.List;
+
 import Expression.Expression;
 import symbols.BracketClose;
 import symbols.BracketOpen;
+import symbols.EndofInput;
 import symbols.ErrorToken;
 import symbols.MultOp;
 import symbols.NaturalNumber;
 import symbols.PlusOp;
+import symbols.Symbol;
 
 public abstract class SymbolVisitor {
 	private Expression expr;
+	private List<Symbol> symbols;
+		
+	public SymbolVisitor( Expression expr, List<Symbol> symbols) {
+		super();
+		this.expr = expr;
+		this.symbols = symbols;
+	}
 	
+		
+	public void skip() {
+		this.symbols.remove(0);
+	}
+	
+	public void handle(EndofInput endofInput) {
+	}; // end the Input of Symbollist!
 	public void handle(BracketClose bracketClose) {
 	} //throws Exception { new Exception("klammer zu");};
 	public void handle(BracketOpen bracketOpen) {
@@ -32,5 +50,14 @@ public abstract class SymbolVisitor {
 		this.expr = expr;
 	}
 	
+	public List<Symbol> getSymbols() {
+		return symbols;
+	}
+	public void setSymbols(List<Symbol> symbols) {
+		this.symbols = symbols;
+	}
+
+	
 	
 }
+	

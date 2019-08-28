@@ -6,11 +6,11 @@ public class Summe implements Expression{
 	 * Erweitert kann der Summand mit der Operator '+' und einem Expression Ausdurck.   
 	 **/
 	private Expression summand2;
-	private Summand summand1;
+	private Expression summand1;
 	
-	public Summe(Expression summand2, Summand summand1) {
+	public Summe(Expression expression , Expression summand2) {
 		super();
-		this.summand1 = summand1;
+		this.summand1 = expression;
 		this.summand2 = summand2;
 	}
 

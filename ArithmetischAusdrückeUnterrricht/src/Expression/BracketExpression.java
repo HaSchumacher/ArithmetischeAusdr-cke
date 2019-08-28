@@ -10,8 +10,12 @@ public class BracketExpression implements Faktor{
 	@Override
 	public Integer evaluate() {
 		return this.evaluate();
-	}	
-	public String toString() {
-		return "(" + expr.toString() + ")";
 	}
+	public Expression getExpr() {
+		return expr;
+	}
+	public void setExpr(Expression expr) {
+		this.expr = expr;
+	}	
+	
 }

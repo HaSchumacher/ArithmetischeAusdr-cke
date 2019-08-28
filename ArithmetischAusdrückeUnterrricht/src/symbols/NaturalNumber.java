@@ -3,18 +3,19 @@ package symbols;
 import Parser.SymbolVisitor;
 import Expression.Faktor;
 public class NaturalNumber implements Symbol, Faktor {
-	private Integer value;
+	private final Integer value;
+	
 	public NaturalNumber(Integer value) {
 		this.setValue(value);
 	}
 
-	public Integer getValue() {
-		return value;
+		
+	private void setValue(Integer value2) {
+		// TODO Auto-generated method stub
+		
 	}
-	public void setValue(Integer value) {
-		this.value = value;
-	}
-	
+
+
 	@Override
 	public boolean equals(Object obj) {// Object entspricht Anything ,return
 										// beendet die Methode
