@@ -1,5 +1,6 @@
 package symbols;
 
+import Parser.SymbolParserException;
 import Parser.SymbolVisitor;
 import basic.TextConstants;
 
@@ -13,7 +14,7 @@ public class MultOp implements Symbol {
 	}
 	public String toString() { return TextConstants.Multop;}
 	
-	public void accept(SymbolVisitor v) {
+	public void accept(SymbolVisitor v) throws SymbolParserException {
 		v.handle(this);
 		
 	}

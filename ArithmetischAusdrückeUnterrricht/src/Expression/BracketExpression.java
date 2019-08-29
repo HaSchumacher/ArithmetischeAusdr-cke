@@ -1,5 +1,7 @@
 package Expression;
 
+import Parser.SymbolParserException;
+
 public class BracketExpression implements Faktor{
 	private Expression expr;
 	/**
@@ -7,15 +9,13 @@ public class BracketExpression implements Faktor{
 	 *Dabei muss jede geöffnete Klammer auch wieder geschlossen werden!  
 	 **/
 
-	@Override
-	public Integer evaluate() {
-		return this.evaluate();
-	}
-	public Expression getExpr() {
-		return expr;
-	}
-	public void setExpr(Expression expr) {
+	public BracketExpression(Expression expr) {
 		this.expr = expr;
-	}	
+	}
+	@Override
+	public Integer evaluate() throws SymbolParserException{
+		return this.expr.evaluate();
+	}
+		
 	
 }

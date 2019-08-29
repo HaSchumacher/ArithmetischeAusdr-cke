@@ -1,4 +1,7 @@
-/Parser/
 /Expression/
+/Parser/
+/basic/
+/scanner/
 /symbols/
 /tests/
+/BinaryOperation/

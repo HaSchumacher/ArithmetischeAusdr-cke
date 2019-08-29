@@ -1,5 +1,6 @@
 package symbols;
 
+import Parser.SymbolParserException;
 import Parser.SymbolVisitor;
 import basic.TextConstants;
 
@@ -15,7 +16,7 @@ public class BracketClose implements Symbol{
 	}
 	public String toString() { return TextConstants.Bracketclose;}
 
-	public void accept(SymbolVisitor v) {
+	public void accept(SymbolVisitor v) throws SymbolParserException {
 		v.handle(this);
 		
 	}

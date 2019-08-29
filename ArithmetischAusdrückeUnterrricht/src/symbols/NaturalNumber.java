@@ -1,21 +1,16 @@
 package symbols;
 
+import Parser.SymbolParserException;
 import Parser.SymbolVisitor;
 import Expression.Faktor;
 public class NaturalNumber implements Symbol, Faktor {
 	private final Integer value;
 	
 	public NaturalNumber(Integer value) {
-		this.setValue(value);
+		this.value = value;
 	}
 
 		
-	private void setValue(Integer value2) {
-		// TODO Auto-generated method stub
-		
-	}
-
-
 	@Override
 	public boolean equals(Object obj) {// Object entspricht Anything ,return
 										// beendet die Methode
@@ -34,7 +29,7 @@ public class NaturalNumber implements Symbol, Faktor {
 		return value.toString();
 	}
 	@Override
-	public void accept(SymbolVisitor v) {
+	public void accept(SymbolVisitor v) throws SymbolParserException {
 		v.handle(this);
 		
 	}

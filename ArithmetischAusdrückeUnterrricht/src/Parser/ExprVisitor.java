@@ -14,11 +14,11 @@ public class ExprVisitor extends SymbolVisitor {
 		super(expr, symbols);
 		}
 	@Override
-	public void handle(PlusOp plusop) {
+	public void handle(PlusOp plusop) throws SymbolParserException {
 		super.skip();
 		super.setExpr(new Summe(super.getExpr(), new ExpressionParser().toExpression(super.getSymbols())));
 	}
-	public void handle(BracketClose brc) {
+	public void handle(BracketClose brc) throws SymbolParserException {
 		return;
 	}
 	

@@ -24,25 +24,28 @@ public abstract class SymbolVisitor {
 	
 		
 	public void skip() {
-		this.symbols.remove(0);
+		try {
+			this.symbols.remove(0);
+		} catch (IndexOutOfBoundsException e) {
+		}
 	}
 	
-	public void handle(EndofInput endofInput) {
-	}; // end the Input of Symbollist!
-	public void handle(BracketClose bracketClose) {
-	} //throws Exception { new Exception("klammer zu");};
-	public void handle(BracketOpen bracketOpen) {
-	}// throws Exception { new Exception("klammer auf");};
-	public void handle(NaturalNumber naturalNumber) {
-	}// throws Exception { new Exception("keine Zahl");};
-	public void handle(ErrorToken errorToken) {
-	}// throws Exception { new Exception("Fehler detected");};
-	public void handle(MultOp multOp) {
+	public void handle(EndofInput endofInput)throws SymbolParserException{
+		return;} // Terminiert Auswertung durch Symbol! 
+	public void handle(BracketClose bracketClose) throws SymbolParserException{
+	}
+	public void handle(BracketOpen bracketOpen) throws SymbolParserException{
+	}
+	public void handle(NaturalNumber naturalNumber) throws SymbolParserException{
+	}
+	public void handle(ErrorToken errorToken) throws SymbolParserException{
+	}
+	public void handle(MultOp multOp) throws SymbolParserException {
 	} //throws Exception { new Exception("Multi OP");};
-	public void handle(PlusOp plusOp) {
-	} //throws Exception { new Exception("Plus OP");};
+	public void handle(PlusOp plusOp) throws SymbolParserException{
+	}
 	
-	
+	// Getter und Setter für Attribute des SymbolVisitors
 	public Expression getExpr() {
 		return expr;
 	}

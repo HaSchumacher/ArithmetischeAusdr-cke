@@ -4,9 +4,9 @@ import java.util.List;
 
 import Expression.Expression;
 import Expression.Produkt;
-import symbols.BracketOpen;
+import symbols.BracketClose;
 import symbols.MultOp;
-import symbols.NaturalNumber;
+import symbols.PlusOp;
 import symbols.Symbol;
 
 public class SummandVisitor extends SymbolVisitor {
@@ -15,20 +15,19 @@ public class SummandVisitor extends SymbolVisitor {
 		super(expr, symbols);
 		}
 
-	public void handle(MultOp multop) {
+	public void handle(MultOp multop) throws SymbolParserException{
 		super.skip();
-		super.setExpr(new Produkt 
-				(super.getExpr(), new SummenParser().toExpression(super.getSymbols())));
+		try {
+			super.setExpr(new Produkt(super.getExpr(), new SummenParser().toExpression(super.getSymbols())));
+		} catch (Exception e) {}
 		
 	}
 	
+	public void handle(PlusOp plusop) throws SymbolParserException{
+		return;	}
 	@Override
-	public void handle(NaturalNumber number) {
-	super.setExpr(new FactorParser().toExpression(super.getSymbols()));}
-
-	@Override
-	public void handle(BracketOpen bro) {
-		super.setExpr(new FactorParser().toExpression(super.getSymbols()));}
+	public void handle(BracketClose brc) throws SymbolParserException {
+		return;}
 	
 
 }

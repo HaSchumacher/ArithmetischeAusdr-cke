@@ -1,5 +1,8 @@
 package Expression;
 
+import BinaryOperation.Multiplikation;
+import Parser.SymbolParserException;
+
 public class Produkt implements Summand {
 	/**
 	 * Ein Produkt besteht mindestens aus einem Faktor.
@@ -14,15 +17,10 @@ public class Produkt implements Summand {
 		this.summand1 = expression;
 	}
 
-
-
 	@Override
-	public Integer evaluate() {
-		Integer result = factor2.evaluate() * summand1.evaluate();
-		return result;
+	public Integer evaluate() throws SymbolParserException {
+		return Multiplikation.INSTANCE.calculate(this.summand1, this.factor2);
 	}
-	public String toString() {
-		return summand1.toString() + "*" + factor2.toString();
-	}
+	
 	
 }

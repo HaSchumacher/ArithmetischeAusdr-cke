@@ -1,5 +1,6 @@
 package symbols;
 
+import Parser.SymbolParserException;
 import Parser.SymbolVisitor;
 
 public class ErrorToken implements Symbol {
@@ -27,7 +28,7 @@ public class ErrorToken implements Symbol {
 	}
 
 	@Override
-	public void accept(SymbolVisitor v) {
+	public void accept(SymbolVisitor v) throws SymbolParserException {
 		v.handle(this);
 		
 	}
