@@ -6,6 +6,10 @@ import Parser.SymbolVisitor;
 public class ErrorToken implements Symbol {
 
 	private Character err;
+	public Character getErr() {
+		return err;
+	}
+
 	public ErrorToken(Character c) {
 	 	this.err = c;
 	}

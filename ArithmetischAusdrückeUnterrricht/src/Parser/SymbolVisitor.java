@@ -33,17 +33,23 @@ public abstract class SymbolVisitor {
 	public void handle(EndofInput endofInput)throws SymbolParserException{
 		return;} // Terminiert Auswertung durch Symbol! 
 	public void handle(BracketClose bracketClose) throws SymbolParserException{
+		throw new SymbolParserException("Bracket Close in wrong place"); 
 	}
 	public void handle(BracketOpen bracketOpen) throws SymbolParserException{
+		throw new SymbolParserException("Bracket Open in wrong place");
 	}
 	public void handle(NaturalNumber naturalNumber) throws SymbolParserException{
-	}
+		throw new SymbolParserException("Number in wrong place");
+		}
 	public void handle(ErrorToken errorToken) throws SymbolParserException{
-	}
+		throw new SymbolParserException("Scanner could not scan:" + errorToken.getErr());
+		}
 	public void handle(MultOp multOp) throws SymbolParserException {
-	} //throws Exception { new Exception("Multi OP");};
-	public void handle(PlusOp plusOp) throws SymbolParserException{
+		throw new SymbolParserException("Multiplikations Operator in wrong place");
 	}
+	public void handle(PlusOp plusOp) throws SymbolParserException{
+		throw new SymbolParserException("Plus Operator in wrong place");
+		}
 	
 	// Getter und Setter für Attribute des SymbolVisitors
 	public Expression getExpr() {
