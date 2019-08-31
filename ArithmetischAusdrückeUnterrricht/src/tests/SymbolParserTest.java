@@ -10,11 +10,9 @@ import Parser.SymbolParserException;
 import scanner.Scanner;
 
 class SymbolParserTest {
-	private Scanner scanner;
-	private ExpressionParserProxy parser;
 	public void setUp() {
-		this.scanner = new Scanner();
-		this.parser = new ExpressionParserProxy();
+		new Scanner();
+		new ExpressionParserProxy();
 		}
 	@Test
 	void test1() throws SymbolParserException {
@@ -42,7 +40,7 @@ class SymbolParserTest {
 		
 		assertEquals(10, new ExpressionParserProxy().toExpression(new Scanner().toSymbolSequence ("10")).evaluate());
 	}
-
+	
 	
 
 }

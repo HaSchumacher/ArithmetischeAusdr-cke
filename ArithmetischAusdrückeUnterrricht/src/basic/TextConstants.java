@@ -8,5 +8,7 @@ public class TextConstants {
 	public final static String Multop = "*";
 	public final static String Bracketopen = "(";
 	public final static String Bracketclose = ")";
+	public final static String Minusop = "-";
+	public final static String Divop = "/";
 		
 }
