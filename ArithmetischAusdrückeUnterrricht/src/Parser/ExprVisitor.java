@@ -7,7 +7,7 @@ import Expression.Substraction;
 import Expression.Summe;
 import symbols.BracketClose;
 import symbols.PlusOp;
-import symbols.Subtraction;
+import symbols.MinOp;
 import symbols.Symbol;
 
 public class ExprVisitor extends SymbolVisitor {
@@ -18,12 +18,17 @@ public class ExprVisitor extends SymbolVisitor {
 	@Override
 	public void handle(PlusOp plusop) throws SymbolParserException {
 		super.skip();
-		super.setExpr(new Summe(super.getExpr(), new ExpressionParser().toExpression(super.getSymbols())));
+		//super.setExpr(new Summe(super.getExpr(), new ExpressionParser().toExpression(super.getSymbols())));
+		super.setExpr( new Summe(new ExpressionParser().toExpression(super.getSymbols()), super.getExpr()));
 	}
-	public void handle(Subtraction subop) throws SymbolParserException {
+	public void handle(MinOp subop) throws SymbolParserException {
 		super.skip();
-		super.setExpr(new Substraction(super.getExpr(), new ExpressionParser().toExpression(super.getSymbols())));
+		super.setExpr(new Substraction(new ExpressionParser().toExpression(super.getSymbols()), super.getExpr()));
 	}
-	public void handle(BracketClose brc) throws SymbolParserException {}
+	public void handle(BracketClose brc) throws SymbolParserException {
+		if (FactorVisitor.bracketuse != 0) {}
+		else throw new SymbolParserException("Syntax wrong no open Bracket detected!");
+	}
 	
-	}
+
+}

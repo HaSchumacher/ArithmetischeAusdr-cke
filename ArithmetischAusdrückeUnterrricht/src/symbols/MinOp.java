@@ -4,20 +4,17 @@ import Parser.SymbolParserException;
 import Parser.SymbolVisitor;
 import basic.TextConstants;
 
-public class Division implements Symbol {
+public class MinOp implements Symbol {
 
-	private static Division theonlydiv = new Division();
-	private Division() {
+	private static MinOp theonlysub = new MinOp();
+	private MinOp() {
 		
 	}
-	public static Division getInstance() {
-		return theonlydiv;
+	public static MinOp getInstance() {
+		return theonlysub;
 	}
 	public String toString() { return TextConstants.Plusop;}
 	
 	public void accept(SymbolVisitor v) throws SymbolParserException {
-		v.handle(this);
-		
-	}
-
+		v.handle(this);}
 }

@@ -10,7 +10,8 @@ public class Division implements BinaryOperation {
 	}
 	@Override
 	public Integer calculate(Expression x1, Expression x2) throws SymbolParserException {
-		return x1.evaluate() / x2.evaluate();
+		if (x2.evaluate() != 0 ) {return x2.evaluate() / x1.evaluate();}
+		else {throw new SymbolParserException("Division durch 0 nicht erlaubt!");}
 	}
 
 }

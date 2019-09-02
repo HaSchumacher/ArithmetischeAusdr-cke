@@ -14,7 +14,7 @@ public class Substraction implements Expression {
 	@Override
 	public Integer evaluate() throws SymbolParserException {
 		
-		return BinaryOperation.Substraction.INSTANCE.calculate(subtrahend1, minuent2);
+		return BinaryOperation.Substraktion.INSTANCE.calculate(subtrahend1, minuent2);
 	}
 
 }

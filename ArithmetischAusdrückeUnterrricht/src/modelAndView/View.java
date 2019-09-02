@@ -8,8 +8,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import exception.CalculationException;
-import parser.exception.ParserException;
+import Parser.SymbolParserException;
 
 import javax.swing.JLabel;
 import javax.swing.JTextField;
@@ -22,6 +21,11 @@ import java.awt.event.ActionEvent;
  * Methoden getTextFieldInput(), getBtnEvaluateButton()  
  */
 public class View extends JFrame {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	private Facade facade;
 	
 /*================= Generierter Code ============== */	
@@ -94,7 +98,7 @@ public class View extends JFrame {
 						Integer value = facade.evaluateExpression(textField_Input.getText());
 						textField_Value.setText(value.toString());
 						textField_Message.setText("Syntax OK");
-					}catch(ParserException | CalculationException e) {
+					}catch(SymbolParserException e) {
 						textField_Value.setText("");
 						textField_Message.setText(e.getMessage());
 					}

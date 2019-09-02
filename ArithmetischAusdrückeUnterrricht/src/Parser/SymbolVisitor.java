@@ -5,13 +5,13 @@ import java.util.List;
 import Expression.Expression;
 import symbols.BracketClose;
 import symbols.BracketOpen;
-import symbols.Division;
+import symbols.DivOp;
 import symbols.EndofInput;
 import symbols.ErrorToken;
 import symbols.MultOp;
 import symbols.NaturalNumber;
 import symbols.PlusOp;
-import symbols.Subtraction;
+import symbols.MinOp;
 import symbols.Symbol;
 
 public abstract class SymbolVisitor {
@@ -69,12 +69,12 @@ public abstract class SymbolVisitor {
 	}
 
 
-	public void handle(Subtraction subtraction)throws SymbolParserException{
+	public void handle(MinOp subtraction)throws SymbolParserException{
 		throw new SymbolParserException("Substraction Operator in wrong place");
 	}
 
 
-	public void handle(Division division)throws SymbolParserException{
+	public void handle(DivOp division)throws SymbolParserException{
 		throw new SymbolParserException("Division Operator in wrong place");
 	};
 

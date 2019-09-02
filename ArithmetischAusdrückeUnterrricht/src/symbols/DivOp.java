@@ -4,17 +4,21 @@ import Parser.SymbolParserException;
 import Parser.SymbolVisitor;
 import basic.TextConstants;
 
-public class Subtraction implements Symbol {
+public class DivOp implements Symbol {
 
-	private static Subtraction theonlysub = new Subtraction();
-	private Subtraction() {
+	private static DivOp theonlydiv = new DivOp();
+	private DivOp() {
 		
 	}
-	public static Subtraction getInstance() {
-		return theonlysub;
+	public static DivOp getInstance() {
+		return theonlydiv;
 	}
 	public String toString() { return TextConstants.Plusop;}
 	
 	public void accept(SymbolVisitor v) throws SymbolParserException {
-		v.handle(this);}
+		v.handle(this);
+		
+	}
+	
+
 }

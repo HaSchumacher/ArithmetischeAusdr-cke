@@ -3,11 +3,11 @@ package basic;
 import java.util.HashMap;
 import java.util.Map;
 
-import symbols.Division;
+import symbols.DivOp;
 import symbols.MultOp;
 import symbols.PlusOp;
 import symbols.Symbol;
-import symbols.Subtraction;
+import symbols.MinOp;
 
 public class OpTable implements SymbolTable {
 	/**Die Operator Tabelle kennt eine Hash-Map, die die Operationen,
@@ -17,8 +17,8 @@ public class OpTable implements SymbolTable {
 	{
 		put('+', PlusOp.getInstance());
 		put('*', MultOp.getInstance());
-		put('-', Subtraction.getInstance());
-		put('/', Division.getInstance());
+		put('-', MinOp.getInstance());
+		put('/', DivOp.getInstance());
 	}
 	};
 	

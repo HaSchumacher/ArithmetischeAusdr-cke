@@ -43,12 +43,17 @@ class SymbolParserTest {
 	@Test
 	void test7() throws SymbolParserException {
 		
-		assertEquals(new SymbolParserException(), new ExpressionParserProxy().toExpression(new Scanner().toSymbolSequence ("(10+5")).evaluate());
+		assertEquals(5, new ExpressionParserProxy().toExpression(new Scanner().toSymbolSequence ("(10-5)")).evaluate());
 	}
 	@Test
 	void test8() throws SymbolParserException {
 		
-		assertEquals(new SymbolParserException(), new ExpressionParserProxy().toExpression(new Scanner().toSymbolSequence ("5)))")).evaluate());
+		assertEquals(5, new ExpressionParserProxy().toExpression(new Scanner().toSymbolSequence ("(10/2)")).evaluate());
+	}
+	@Test
+	void test9() throws SymbolParserException {
+		
+		assertEquals(new SymbolParserException("Syntax wrong no open Bracket detected!"), new ExpressionParserProxy().toExpression(new Scanner().toSymbolSequence ("5)))")).evaluate());
 	}
 	
 
