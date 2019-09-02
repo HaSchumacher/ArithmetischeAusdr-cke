@@ -2,6 +2,7 @@ package tests;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 
@@ -52,9 +53,20 @@ class SymbolParserTest {
 	}
 	@Test
 	void test9() throws SymbolParserException {
+		Assertions.assertThrows(SymbolParserException.class, () -> {
+		      new ExpressionParserProxy().toExpression(new Scanner().toSymbolSequence("5)))")).evaluate();
+	});}
+	@Test
+	void test10() throws SymbolParserException {
+		Assertions.assertThrows(SymbolParserException.class, () -> {
+			new ExpressionParserProxy().toExpression(new Scanner().toSymbolSequence("((1+5)*3)-2)")).evaluate();      
+	});}	
 		
-		assertEquals(new SymbolParserException("Syntax wrong no open Bracket detected!"), new ExpressionParserProxy().toExpression(new Scanner().toSymbolSequence ("5)))")).evaluate());
+	@Test
+	void test11() throws SymbolParserException {
+		
+		assertEquals(14, new ExpressionParserProxy().toExpression(new Scanner().toSymbolSequence 
+				("((1+5*3)-2)")).evaluate());
 	}
-	
 
 }
