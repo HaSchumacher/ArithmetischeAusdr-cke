@@ -23,11 +23,9 @@ public class SummandVisitor extends SymbolVisitor {
 		
 	}
 	
-	public void handle(PlusOp plusop) throws SymbolParserException{
-		return;	}
+	public void handle(PlusOp plusop) throws SymbolParserException{}
 	@Override
-	public void handle(BracketClose brc) throws SymbolParserException {
-		return;}
+	public void handle(BracketClose brc) throws SymbolParserException {}
 	
 
 }

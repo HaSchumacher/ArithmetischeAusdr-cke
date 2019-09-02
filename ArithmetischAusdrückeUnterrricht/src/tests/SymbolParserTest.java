@@ -40,7 +40,16 @@ class SymbolParserTest {
 		
 		assertEquals(10, new ExpressionParserProxy().toExpression(new Scanner().toSymbolSequence ("10")).evaluate());
 	}
-	
+	@Test
+	void test7() throws SymbolParserException {
+		
+		assertEquals(new SymbolParserException(), new ExpressionParserProxy().toExpression(new Scanner().toSymbolSequence ("(10+5")).evaluate());
+	}
+	@Test
+	void test8() throws SymbolParserException {
+		
+		assertEquals(new SymbolParserException(), new ExpressionParserProxy().toExpression(new Scanner().toSymbolSequence ("5)))")).evaluate());
+	}
 	
 
 }

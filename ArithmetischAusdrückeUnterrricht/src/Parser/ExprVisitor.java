@@ -24,8 +24,6 @@ public class ExprVisitor extends SymbolVisitor {
 		super.skip();
 		super.setExpr(new Substraction(super.getExpr(), new ExpressionParser().toExpression(super.getSymbols())));
 	}
-	public void handle(BracketClose brc) throws SymbolParserException {
-		return;
-	}
+	public void handle(BracketClose brc) throws SymbolParserException {}
 	
 	}

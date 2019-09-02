@@ -3,7 +3,6 @@ package Parser;
 import java.util.List;
 
 import Expression.Expression;
-import Expression.Produkt;
 import symbols.Symbol;
 
 public class SummenParser extends SymbolParser{

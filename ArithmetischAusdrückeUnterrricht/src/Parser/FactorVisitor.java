@@ -4,7 +4,6 @@ import java.util.List;
 
 import Expression.BracketExpression;
 import Expression.Expression;
-import scanner.BracketState;
 import symbols.BracketClose;
 import symbols.BracketOpen;
 import symbols.NaturalNumber;
@@ -32,7 +31,7 @@ public class FactorVisitor extends SymbolVisitor {
 	private void checkofBracketclose() throws SymbolParserException{
 		if (super.getSymbols().get(0) instanceof BracketClose)  
 			super.skip();
-		else throw new SymbolParserException("Syntax wrong");
+		else throw new SymbolParserException("Syntax wrong - Right Bracket is missing");
 		
 	}
 	}
