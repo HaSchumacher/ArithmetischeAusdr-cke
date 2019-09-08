@@ -68,5 +68,11 @@ class SymbolParserTest {
 		assertEquals(14, new ExpressionParserProxy().toExpression(new Scanner().toSymbolSequence 
 				("((1+5*3)-2)")).evaluate());
 	}
+	@Test
+	void test12() throws SymbolParserException {
+		
+		assertEquals(2, new ExpressionParserProxy().toExpression(new Scanner().toSymbolSequence 
+				("10-5-3")).evaluate());
+	}
 
 }

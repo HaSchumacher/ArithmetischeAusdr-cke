@@ -1,7 +1,5 @@
-/modelAndView/
-/BinaryOperation/
-/Expression/
-/Parser/
-/basic/
-/symbols/
 /tests/
+/Parser/
+/ModelViewController/
+/Expression/
+/BinaryOperation/

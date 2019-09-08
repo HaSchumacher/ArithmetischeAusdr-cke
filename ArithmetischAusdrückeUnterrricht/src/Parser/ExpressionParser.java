@@ -13,11 +13,12 @@ class ExpressionParser extends ExpressionParserProxy{
 	 **/
 	
 	public Expression toExpression(List<Symbol> symbols) throws SymbolParserException{
+		Expression Minuend =  new MinuendParser().toExpression(symbols);
+		MinuendVisitor minvis = new MinuendVisitor(Minuend, symbols);
+		symbols.get(0).accept(minvis);
+		return minvis.getExpr();
 		
-		Expression expr = new SummenParser().toExpression(symbols);
-		ExprVisitor expressionvisitor = new ExprVisitor(expr, symbols);
-		symbols.get(0).accept(expressionvisitor);
-		return expressionvisitor.getExpr(); 
+		
 		}
 		
 	

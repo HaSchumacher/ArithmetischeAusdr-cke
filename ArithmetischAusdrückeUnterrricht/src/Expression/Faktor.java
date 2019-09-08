@@ -1,6 +1,6 @@
 package Expression;
 
-public interface Faktor extends Summand{
+public interface Faktor extends Divident{
 	
 	
 }

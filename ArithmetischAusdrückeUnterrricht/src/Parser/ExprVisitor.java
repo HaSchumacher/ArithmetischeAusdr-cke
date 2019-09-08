@@ -1,13 +1,13 @@
 package Parser;
 
 import java.util.List;
+import Expression.Differenz;
 
 import Expression.Expression;
-import Expression.Substraction;
-import Expression.Summe;
+import Expression.Subtrahend;
 import symbols.BracketClose;
-import symbols.PlusOp;
 import symbols.MinOp;
+import symbols.PlusOp;
 import symbols.Symbol;
 
 public class ExprVisitor extends SymbolVisitor {
@@ -16,19 +16,16 @@ public class ExprVisitor extends SymbolVisitor {
 		super(expr, symbols);
 		}
 	@Override
-	public void handle(PlusOp plusop) throws SymbolParserException {
+	public void handle(MinOp minop) throws SymbolParserException {
 		super.skip();
 		//super.setExpr(new Summe(super.getExpr(), new ExpressionParser().toExpression(super.getSymbols())));
-		super.setExpr( new Summe(new ExpressionParser().toExpression(super.getSymbols()), super.getExpr()));
+		super.setExpr( new Differenz((Subtrahend) new ExpressionParser().toExpression(super.getSymbols()), super.getExpr()));
 	}
-	public void handle(MinOp subop) throws SymbolParserException {
-		super.skip();
-		super.setExpr(new Substraction(new ExpressionParser().toExpression(super.getSymbols()), super.getExpr()));
+	public void handle(PlusOp plusop) throws SymbolParserException {
+		
 	}
-	public void handle(BracketClose brc) throws SymbolParserException {
-		if (FactorVisitor.bracketuse != 0) {}
-		else throw new SymbolParserException("Syntax wrong no open Bracket detected!");
+	public void handle (BracketClose brc) throws SymbolParserException{
+		if (FactorVisitor.bracketuse == 0 ) throw new SymbolParserException("Brackte Close is missing");
 	}
 	
-
 }

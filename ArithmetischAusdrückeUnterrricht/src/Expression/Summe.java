@@ -3,15 +3,15 @@ package Expression;
 import BinaryOperation.Addition;
 import Parser.SymbolParserException;
 
-public class Summe implements Expression{
+public class Summe implements Subtrahend{
 	/**
 	 * Eine Summe besteht aus mindestens einem Summanten. 
 	 * Erweitert kann der Summand mit der Operator '+' und einem Expression Ausdurck.   
 	 **/
-	private Expression summand1;
+	private Subtrahend summand1;
 	private Expression summand2;
 	
-	public Summe(Expression summand1 , Expression expression) {
+	public Summe(Subtrahend summand1 , Expression expression) {
 		super();
 		this.summand1 = summand1;
 		this.summand2 = expression;

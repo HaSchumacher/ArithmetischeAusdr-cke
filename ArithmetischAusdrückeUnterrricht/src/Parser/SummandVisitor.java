@@ -2,9 +2,7 @@ package Parser;
 
 import java.util.List;
 import Expression.Division;
-
 import Expression.Expression;
-import Expression.Produkt;
 import symbols.BracketClose;
 import symbols.DivOp;
 import symbols.MinOp;
@@ -18,25 +16,17 @@ public class SummandVisitor extends SymbolVisitor {
 		super(expr, symbols);
 		}
 
-	public void handle(MultOp multop) throws SymbolParserException{
+	public void handle(DivOp divop) throws SymbolParserException{
 		super.skip();
-		
-			//super.setExpr(new Produkt(super.getExpr(), new SummenParser().toExpression(super.getSymbols())));
-			super.setExpr(new Produkt(new SummenParser().toExpression(super.getSymbols()), super.getExpr()));
+		//super.setExpr(new Produkt(super.getExpr(), new SummenParser().toExpression(super.getSymbols())));
+		super.setExpr(new Division(super.getExpr(), new SummenParser().toExpression(super.getSymbols())));
 	}
+	public void handle(MultOp multop) throws SymbolParserException{}
 	
-	public void handle(DivOp div) throws SymbolParserException{
-		super.skip();
-		super.setExpr(new Division(new SummenParser().toExpression(super.getSymbols()), super.getExpr()));
-		
-	}
 	public void handle(PlusOp plusop) throws SymbolParserException{}
 	public void handle(MinOp minusop) throws SymbolParserException{}
-	@Override
-	public void handle(BracketClose brc) throws SymbolParserException {
-		if (FactorVisitor.bracketuse != 0) {}
-		else throw new SymbolParserException("Syntax wrong no open Bracket detected!");
+	public void handle(BracketClose brc ) throws SymbolParserException{
+		if (FactorVisitor.bracketuse == 0 ) throw new SymbolParserException("Brackte Close is missing");
 	}
 	
-
 }

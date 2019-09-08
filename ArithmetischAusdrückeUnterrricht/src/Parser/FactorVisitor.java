@@ -25,7 +25,7 @@ public class FactorVisitor extends SymbolVisitor {
 	public
 	void handle (BracketOpen bro) throws SymbolParserException{
 		super.skip();
-		FactorVisitor.bracketuse += 1 ;
+		FactorVisitor.bracketuse = + 1 ;
 		super.setExpr(new BracketExpression(new ExpressionParser().toExpression(super.getSymbols())));
 		this.checkofBracketclose();
 		}

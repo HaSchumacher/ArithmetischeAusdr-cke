@@ -5,12 +5,13 @@ import Parser.SymbolParserException;
 public class Division implements Summand {
 
 	
+	private Divident divident;
 	private Expression divisor;
-	private Expression divident;
 	
-	public Division(Expression divisor, Expression divident) {
+	
+	public Division(Expression divident, Expression divisor) {
 		super();
-		this.divident = divident;
+		this.divident = (Divident) divident;
 		this.divisor = divisor;
 		
 	}

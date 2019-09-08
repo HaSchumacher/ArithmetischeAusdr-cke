@@ -35,8 +35,7 @@ public abstract class SymbolVisitor {
 	public void handle(EndofInput endofInput)throws SymbolParserException{
 		return;} // Terminiert Auswertung durch Symbol! 
 	public void handle(BracketClose bracketClose) throws SymbolParserException{
-		throw new SymbolParserException("Bracket Close in wrong place"); 
-	}
+		throw new SymbolParserException("Bracket Close in wrong place");}
 	public void handle(BracketOpen bracketOpen) throws SymbolParserException{
 		throw new SymbolParserException("Bracket Open in wrong place");
 	}
@@ -52,6 +51,12 @@ public abstract class SymbolVisitor {
 	public void handle(PlusOp plusOp) throws SymbolParserException{
 		throw new SymbolParserException("Plus Operator in wrong place");
 		}
+	public void handle(MinOp subtraction)throws SymbolParserException{
+		throw new SymbolParserException("Substraction Operator in wrong place");
+	}
+	public void handle(DivOp division)throws SymbolParserException{
+		throw new SymbolParserException("Division Operator in wrong place");
+	};
 	
 	// Getter und Setter für Attribute des SymbolVisitors
 	public Expression getExpr() {
@@ -69,14 +74,7 @@ public abstract class SymbolVisitor {
 	}
 
 
-	public void handle(MinOp subtraction)throws SymbolParserException{
-		throw new SymbolParserException("Substraction Operator in wrong place");
-	}
-
-
-	public void handle(DivOp division)throws SymbolParserException{
-		throw new SymbolParserException("Division Operator in wrong place");
-	};
+	
 
 	
 	

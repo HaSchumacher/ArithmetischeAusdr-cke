@@ -1,6 +1,6 @@
 package Expression;
 
-public interface Summand extends Expression {
+public interface Summand extends Subtrahend {
 
 	
 }
