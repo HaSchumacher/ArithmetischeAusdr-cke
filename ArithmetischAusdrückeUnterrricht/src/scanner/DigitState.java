@@ -18,9 +18,10 @@ public class DigitState extends State {
 		
 	public void scan(Character c) {
 		if(Character.isDigit(c)) {
-		this.collectedDigits = 10*this.collectedDigits + Integer.parseInt(c.toString());
-		myScanner.skip();
-		} else {
+			this.collectedDigits = 10*this.collectedDigits + Integer.parseInt(c.toString());
+			myScanner.skip();
+		}
+		else {
 			this.onTermination();
 			super.setInitialState(myScanner);
 		}

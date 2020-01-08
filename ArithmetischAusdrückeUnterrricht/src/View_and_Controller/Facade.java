@@ -1,7 +1,8 @@
-package modelAndView;
+package View_and_Controller;
 
 import Expression.Expression;
 import Parser.ExpressionParserProxy;
+import Parser.SymbolParser;
 import Parser.SymbolParserException;
 import scanner.Scanner;
 /**
@@ -14,18 +15,15 @@ public class Facade {
  */
 	public Expression createExpression(String userEnteredExpression) throws SymbolParserException{
 		Scanner scanner = new Scanner();
-		ExpressionParserProxy parser = new ExpressionParserProxy();
+		SymbolParser parser = new ExpressionParserProxy();
 		return parser.toExpression(scanner.toSymbolSequence(userEnteredExpression));
 	}
 /**
  * Compiles the <userEnteredExpression> into syntax tree and evaluates
  * Throws Exception, if syntax is incorrect or evaluation failed
  */	
-	public Integer evaluateExpression(String userEnteredExpression) throws SymbolParserException{
+	public Integer evaluateExpression(String userEnteredExpression) throws SymbolParserException {
 		return this.createExpression(userEnteredExpression).evaluate();
 	}
+		
 }
-
-
-
-

@@ -1,7 +1,8 @@
 package Parser;
 
 import java.util.List;
-import Expression.Division;
+
+import Expression.Div;
 
 import Expression.Expression;
 import Expression.Produkt;
@@ -27,7 +28,7 @@ public class SummandVisitor extends SymbolVisitor {
 	
 	public void handle(DivOp div) throws SymbolParserException{
 		super.skip();
-		super.setExpr(new Division(new SummenParser().toExpression(super.getSymbols()), super.getExpr()));
+		super.setExpr(new Div(new SummenParser().toExpression(super.getSymbols()), super.getExpr()));
 		
 	}
 	public void handle(PlusOp plusop) throws SymbolParserException{}

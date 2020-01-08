@@ -13,7 +13,7 @@ public class DivOp implements Symbol {
 	public static DivOp getInstance() {
 		return theonlydiv;
 	}
-	public String toString() { return TextConstants.Plusop;}
+	public String toString() { return TextConstants.Divop;}
 	
 	public void accept(SymbolVisitor v) throws SymbolParserException {
 		v.handle(this);
