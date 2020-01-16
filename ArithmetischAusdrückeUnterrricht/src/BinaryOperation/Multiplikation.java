@@ -12,5 +12,5 @@ public class Multiplikation implements BinaryOperation {
 	public Integer calculate(Expression x1, Expression x2) throws SymbolParserException {
 		return x1.evaluate() * x2.evaluate();
 	}
-
+	
 }

@@ -53,8 +53,11 @@ class SymbolParserTest {
 	@Test
 	void test9() throws SymbolParserException {
 		
-		assertEquals(new SymbolParserException("Syntax wrong no open Bracket detected!"), new ExpressionParserProxy().toExpression(new Scanner().toSymbolSequence ("5)))")).evaluate());
+		assertEquals(new SymbolParserException(), new ExpressionParserProxy().toExpression(new Scanner().toSymbolSequence ("5)))")).evaluate());
 	}
-	
+	 @Test
+	 void test10() throws SymbolParserException{
+		 assertEquals(new SymbolParserException(), new ExpressionParserProxy().toExpression(new Scanner().toSymbolSequence("15+")).evaluate());
+	 }
 
 }

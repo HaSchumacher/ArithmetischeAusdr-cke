@@ -20,16 +20,14 @@ public class SummandVisitor extends SymbolVisitor {
 		}
 
 	public void handle(MultOp multop) throws SymbolParserException{
-		super.skip();
 		
-			//super.setExpr(new Produkt(super.getExpr(), new SummenParser().toExpression(super.getSymbols())));
-			super.setExpr(new Produkt(new SummenParser().toExpression(super.getSymbols()), super.getExpr()));
+			super.skip();
+			super.setExpr(new Produkt(new SummenParser().toExpression(super.getSymbols()), super.getExpr()));		
 	}
 	
 	public void handle(DivOp div) throws SymbolParserException{
 		super.skip();
-		super.setExpr(new Div(new SummenParser().toExpression(super.getSymbols()), super.getExpr()));
-		
+		super.setExpr(new Div(new SummenParser().toExpression(super.getSymbols()), super.getExpr()));	
 	}
 	public void handle(PlusOp plusop) throws SymbolParserException{}
 	public void handle(MinOp minusop) throws SymbolParserException{}

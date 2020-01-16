@@ -1,5 +1,7 @@
 package View_and_Controller;
 
+import javax.swing.tree.DefaultTreeModel;
+
 import Expression.Expression;
 import Parser.ExpressionParserProxy;
 import Parser.SymbolParser;
@@ -26,4 +28,10 @@ public class Facade {
 		return this.createExpression(userEnteredExpression).evaluate();
 	}
 		
+	public DefaultTreeModel createExpressionTree( Expression expr) {
+		return new DefaultTreeModel(new TreeVisitor().buildtree(expr)); 
+		}
+	
+	
+	
 }

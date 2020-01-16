@@ -2,6 +2,9 @@ package Expression;
 
 import BinaryOperation.Multiplikation;
 import Parser.SymbolParserException;
+import View_and_Controller.TreeVisitor;
+import symbols.MultOp;
+import symbols.Symbol;
 
 public class Produkt implements Summand {
 	/**
@@ -20,6 +23,30 @@ public class Produkt implements Summand {
 	@Override
 	public Integer evaluate() throws SymbolParserException {
 		return Multiplikation.INSTANCE.calculate(this.summand1, this.factor2);
+	}
+
+	@Override
+	public void accept(TreeVisitor v) {
+		v.handle(this);
+		
+	}
+
+	@Override
+	public Expression getcontent1() {
+		return summand1;
+	}
+
+	@Override
+	public Expression getcontent2() {
+		return factor2;
+	}
+
+	@Override
+	public Symbol getop() {
+		return MultOp.getInstance();
+	}
+	public String toString() {
+		return "Produkt";
 	}
 	
 	

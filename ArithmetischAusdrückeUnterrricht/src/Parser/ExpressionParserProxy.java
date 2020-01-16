@@ -10,7 +10,7 @@ public class ExpressionParserProxy extends SymbolParser {
 	
 	
 	public Expression toExpression(List<Symbol> symbols) throws SymbolParserException {
-		symbols.add(new EndofInput());
+		symbols.add(EndofInput.getInstance());
 		return new ExpressionParser().toExpression(symbols);
 	}
 

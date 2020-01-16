@@ -15,4 +15,5 @@ public class Addition implements BinaryOperation {
 		return x1.evaluate() + x2.evaluate();
 	}
 
+
 }

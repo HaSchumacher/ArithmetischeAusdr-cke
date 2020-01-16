@@ -2,6 +2,8 @@ package View_and_Controller;
 
 import java.awt.event.ActionEvent;
 
+import javax.swing.tree.DefaultTreeModel;
+import Expression.Expression;
 import Parser.SymbolParserException;
 
 public class Controller {
@@ -13,22 +15,7 @@ public class Controller {
 		this.theView = theView;
 		this.facade = facade;
 		
-// Die folgenden zwei Zeilen 		
-//		EvaluationListener eL = new EvaluationListener(this);
-//		this.theView.getBtnEvaluateButton().addActionListener(eL);
-// 		mit einer Klasse 
-//		EvaluationListener implements ActionListener{
-//			private Controller c;
-// 			public EvaluationListener(Controller c){this.c = c;}		
-//			public void actionPerformed(ActionEvent e){controller.onEvaluationButtonPressed(e)}
-//		}
-// haben die gleiche Wirkung wie 
 		this.theView.getBtnEvaluateButton().addActionListener((e) -> this.onEvluationButtonPressed1(e));
-		
-// Analog:		
-//		CheckSyntaxListener cSL = new CheckSyntaxListener(this);
-//		this.theView.getBtnCheckSyntaxButton().addActionListener(cSL);
-// 		mit entsprechender Klasse CheckSyntaxListener
 		this.theView.getBtnCheckSyntaxButton().addActionListener((e) -> this.onCheckSyntaxButtonPressed());
 	}
 		
@@ -43,7 +30,9 @@ public class Controller {
 		
 	public void onCheckSyntaxButtonPressed() {
 		try {
-			this.facade.createExpression(this.theView.getInput());
+			Expression expr = this.facade.createExpression(this.theView.getInput());
+			DefaultTreeModel node_model = this.facade.createExpressionTree(expr);
+			this.theView.setTree(node_model);
 			this.theView.setMessage(this.syntaxok);
 		} catch (SymbolParserException e) {
 			this.errorHandling(e);
@@ -54,8 +43,6 @@ public class Controller {
 		this.theView.setValue("");
 		this.theView.setMessage(exception.getMessage());
 	}
-
-	
 	
 
 }

@@ -5,6 +5,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
+import javax.swing.tree.DefaultMutableTreeNode;
+import javax.swing.tree.DefaultTreeModel;
 import javax.swing.JButton;
 import javax.swing.JTree;
 import javax.swing.JScrollPane;
@@ -21,6 +23,7 @@ public class View extends JFrame {
 	private JButton btnEvaluateButton;
 	private JButton btnCheckSyntax;
 	private JScrollPane scrollPane;
+	private JTree tree;
 	/**
 	 * Create the frame.
 	 */
@@ -123,11 +126,21 @@ public class View extends JFrame {
 	private JScrollPane getScrollPane() {
 		if (scrollPane == null) {
 			scrollPane = new JScrollPane();
+			scrollPane.setViewportBorder(new EmptyBorder(0, 0, 0, 0));
 			scrollPane.setBounds(440, 33, 330, 213);
+			DefaultMutableTreeNode root = new DefaultMutableTreeNode("Expression");
+			this.tree = new JTree(root);
+			this.scrollPane.setViewportView(tree);
 			
-			JTree tree = new JTree();
-			scrollPane.setViewportView(tree);
 		}
 		return scrollPane;
+		}
+	public JTree getTree() {
+		return tree;
+	}
+
+	public void setTree(DefaultTreeModel tree_model) {
+		this.tree.setModel(tree_model);
+		this.scrollPane.setViewportView(tree);
 	}
 }

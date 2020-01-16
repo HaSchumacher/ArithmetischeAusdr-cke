@@ -27,8 +27,9 @@ public class ExprVisitor extends SymbolVisitor {
 	}
 	public void handle(BracketClose brc) throws SymbolParserException {
 		if (FactorVisitor.bracketuse != 0) {}
-		else throw new SymbolParserException("Syntax wrong no open Bracket detected!");
+		else throw new SymbolParserException("Found Close Bracket but expected an Open Bracket before");
 	}
+	
 	
 
 }

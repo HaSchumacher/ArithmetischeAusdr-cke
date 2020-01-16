@@ -14,4 +14,5 @@ public class Substraktion implements BinaryOperation {
 		return x2.evaluate() - x1.evaluate();
 	}
 
+
 }

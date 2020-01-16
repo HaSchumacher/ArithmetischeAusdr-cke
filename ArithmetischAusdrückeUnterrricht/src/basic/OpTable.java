@@ -19,7 +19,18 @@ public class OpTable implements SymbolTable {
 		put('*', MultOp.getInstance());
 		put('-', MinOp.getInstance());
 		put('/', DivOp.getInstance());
+		
 	}
+	
+	};
+	private static final Map<Symbol, String> stringOpTable = new HashMap<Symbol, String>(){
+		private static final long serialVersionUID = 2;
+		{
+			put(PlusOp.getInstance(), TextConstants.Plusop);
+			put(MultOp.getInstance(), TextConstants.Multop);
+			put(MinOp.getInstance(), TextConstants.Minusop);
+			put(DivOp.getInstance(), TextConstants.Divop);	
+		}
 	};
 	
 	private OpTable() {
@@ -32,4 +43,8 @@ public class OpTable implements SymbolTable {
 	public static Symbol getSymbol(Character key) {
 		return opTable.get(key);
 		}
+	public static String getStringRepresentation(Symbol s) {
+		
+		return stringOpTable.get(s);
+			}
 	};

@@ -31,27 +31,38 @@ public abstract class SymbolVisitor {
 		} catch (IndexOutOfBoundsException e) {
 		}
 	}
-	
+		
 	public void handle(EndofInput endofInput)throws SymbolParserException{
 		return;} // Terminiert Auswertung durch Symbol! 
-	public void handle(BracketClose bracketClose) throws SymbolParserException{
-		throw new SymbolParserException("Bracket Close in wrong place"); 
+	
+	public void handle(BracketOpen bro) throws SymbolParserException{
+		throw new SymbolParserException("Found Bracket Expression without Expression inside");
 	}
-	public void handle(BracketOpen bracketOpen) throws SymbolParserException{
-		throw new SymbolParserException("Bracket Open in wrong place");
+	public void handle(BracketClose bracketClose) throws SymbolParserException{
+		if (FactorVisitor.bracketuse != 0 )
+		{throw new SymbolParserException("Found a Bracket Expression without input but expected Expression inside");}
+		else {
+		throw new SymbolParserException("Found Bracket Close but expected Open Bracket before"); 
+		}
 	}
 	public void handle(NaturalNumber naturalNumber) throws SymbolParserException{
-		throw new SymbolParserException("Number in wrong place");
+		throw new SymbolParserException("Found Numbers without Operators");
 		}
 	public void handle(ErrorToken errorToken) throws SymbolParserException{
 		throw new SymbolParserException("Scanner could not scan:" + errorToken.getErr());
 		}
 	public void handle(MultOp multOp) throws SymbolParserException {
-		throw new SymbolParserException("Multiplikations Operator in wrong place");
+		throw new SymbolParserException("Found Mult Operator but expected Number before Operator");
 	}
 	public void handle(PlusOp plusOp) throws SymbolParserException{
-		throw new SymbolParserException("Plus Operator in wrong place");
+		throw new SymbolParserException("Found Plus Operator but expected Number before Operator");
 		}
+	public void handle(MinOp subtraction)throws SymbolParserException{
+		throw new SymbolParserException("Found Min Operator but expected Number before Operator");
+	}
+	public void handle(DivOp division)throws SymbolParserException{
+		throw new SymbolParserException("Found Div Operator but expected Number before Operator");
+	}
 	
 	// Getter und Setter für Attribute des SymbolVisitors
 	public Expression getExpr() {
@@ -67,18 +78,5 @@ public abstract class SymbolVisitor {
 	public void setSymbols(List<Symbol> symbols) {
 		this.symbols = symbols;
 	}
-
-
-	public void handle(MinOp subtraction)throws SymbolParserException{
-		throw new SymbolParserException("Substraction Operator in wrong place");
-	}
-
-
-	public void handle(DivOp division)throws SymbolParserException{
-		throw new SymbolParserException("Division Operator in wrong place");
-	};
-
-	
-	
 }
 	

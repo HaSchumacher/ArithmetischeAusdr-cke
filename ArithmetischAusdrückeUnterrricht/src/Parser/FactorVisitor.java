@@ -6,6 +6,7 @@ import Expression.BracketExpression;
 import Expression.Expression;
 import symbols.BracketClose;
 import symbols.BracketOpen;
+import symbols.EndofInput;
 import symbols.NaturalNumber;
 import symbols.Symbol;
 
@@ -22,22 +23,26 @@ public class FactorVisitor extends SymbolVisitor {
 		super.setExpr(number);
 	}
 	@Override
-	public
-	void handle (BracketOpen bro) throws SymbolParserException{
+	public void handle (BracketOpen bro) throws SymbolParserException{
 		super.skip();
 		FactorVisitor.bracketuse += 1 ;
 		super.setExpr(new BracketExpression(new ExpressionParser().toExpression(super.getSymbols())));
 		this.checkofBracketclose();
 		}
-
+	
+	public void handle(EndofInput eoi) throws SymbolParserException {
+		throw new SymbolParserException("Found End of Input but expected BracketOpen or NaturalNumber");
+	}
+	
+	
 	private void checkofBracketclose() throws SymbolParserException{
 		if (super.getSymbols().get(0) instanceof BracketClose)  
 			{super.skip();
 			FactorVisitor.bracketuse -= 1;}
 		else throw new SymbolParserException("Syntax wrong - Right Bracket is missing");
-		
+		}
 	}
-	}
+	
 	
 
 
