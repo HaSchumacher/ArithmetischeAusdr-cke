@@ -74,6 +74,9 @@ public class View extends JFrame {
 	void setMessage(String s) {
 		this.textField_Message.setText(s);
 	}
+	public JTree getTree() {
+		return tree;
+	}
 	
 // ===================== More private UI Elements =======================
 	private JPanel getTheContentPane() {
@@ -135,12 +138,12 @@ public class View extends JFrame {
 		}
 		return scrollPane;
 		}
-	public JTree getTree() {
-		return tree;
-	}
+
 
 	public void setTree(DefaultTreeModel tree_model) {
 		this.tree.setModel(tree_model);
 		this.scrollPane.setViewportView(tree);
 	}
+
+	
 }

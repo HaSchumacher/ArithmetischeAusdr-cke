@@ -6,7 +6,7 @@ import javax.swing.tree.DefaultTreeModel;
 import Expression.Expression;
 import Parser.SymbolParserException;
 
-public class Controller {
+public class Controller implements Observer {
 	private final String syntaxok = "Syntax OK";
 	private View theView;
 	private Facade facade;
@@ -43,6 +43,15 @@ public class Controller {
 		this.theView.setValue("");
 		this.theView.setMessage(exception.getMessage());
 	}
-	
+
+	@Override
+	public void update() {
+		this.theView.setValue(this.facade.getEvaluatetexpr().toString());
+		this.theView.setTree(this.facade.createExpressionTree(this.facade.getExpr()));
+		this.theView.setMessage(syntaxok);
+		
+		
+	}
+
 
 }
