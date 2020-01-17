@@ -19,4 +19,10 @@ public abstract class Observable {
 	public void notifyObservers() {
 		for (Observer current: observers) current.update();
 	}
+	public void excnotify(Exception e) {
+		for (Observer current: observers) current.update(e);
+	}
+	public void notifyevalObservers(int i) {
+		for (Observer current: observers) current.update(i);
+	}
 }

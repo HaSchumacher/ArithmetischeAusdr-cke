@@ -68,6 +68,10 @@ public class View extends JFrame {
 	String getInput() {
 		return this.textField_Input.getText();
 	}
+	
+	void setInput(String update) {
+		this.textField_Input.setText(update);
+	}
 	void setValue(String s) {
 		this.textField_Value.setText(s);
 	}

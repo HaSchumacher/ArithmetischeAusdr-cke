@@ -15,27 +15,29 @@ public class Controller implements Observer {
 		this.theView = theView;
 		this.facade = facade;
 		
-		this.theView.getBtnEvaluateButton().addActionListener((e) -> this.onEvluationButtonPressed1(e));
+		this.theView.getBtnEvaluateButton().addActionListener((e) -> this.onEvluationButtonPressed(e));
 		this.theView.getBtnCheckSyntaxButton().addActionListener((e) -> this.onCheckSyntaxButtonPressed());
+		
 	}
 		
-	public void onEvluationButtonPressed1(ActionEvent arg0) {
+	public void onEvluationButtonPressed(ActionEvent arg0) {
 		try {
 			this.theView.setValue(this.facade.evaluateExpression(this.theView.getInput()).toString());
 			this.theView.setMessage(arg0.getActionCommand() + ": " + this.syntaxok);
 		} catch(SymbolParserException e) {
-			this.errorHandling(e);
+			this.facade.excnotify(e);
 		}
 	}
 		
 	public void onCheckSyntaxButtonPressed() {
 		try {
+			this.facade.setUserEnteredExpression(this.theView.getInput());
 			Expression expr = this.facade.createExpression(this.theView.getInput());
 			DefaultTreeModel node_model = this.facade.createExpressionTree(expr);
 			this.theView.setTree(node_model);
 			this.theView.setMessage(this.syntaxok);
 		} catch (SymbolParserException e) {
-			this.errorHandling(e);
+			this.facade.excnotify(e);
 		}
 	}
 
@@ -46,11 +48,21 @@ public class Controller implements Observer {
 
 	@Override
 	public void update() {
-		this.theView.setValue(this.facade.getEvaluatetexpr().toString());
+		this.theView.setInput(this.facade.getUserEnteredExpression());
 		this.theView.setTree(this.facade.createExpressionTree(this.facade.getExpr()));
 		this.theView.setMessage(syntaxok);
+	}
+
+	public void update(Integer a) {
+		this.update();
+		this.theView.setValue(this.facade.getEvaluatetexpr().toString());
 		
-		
+	}
+
+	@Override
+	public void update(Exception e) {
+		this.theView.setInput(this.facade.getUserEnteredExpression());
+		this.errorHandling(e);			
 	}
 
 

@@ -43,7 +43,7 @@ public class Facade extends Observable{
  */	
 	public Integer evaluateExpression(String userEnteredExpression) throws SymbolParserException {
 		setEvaluatetexpr(this.expr.evaluate());
-		notifyObservers();
+		notifyevalObservers(0);
 		return this.getEvaluatetexpr();
 	}
 		
@@ -64,4 +64,5 @@ public class Facade extends Observable{
 	public void setEvaluatetexpr(Integer evaluatetexpr) {
 		this.evaluatetexpr = evaluatetexpr;
 	}
+	
 }
