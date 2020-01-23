@@ -5,7 +5,6 @@ import javax.swing.tree.DefaultMutableTreeNode;
 import Expression.BracketExpression;
 import Expression.Expression;
 import basic.OpTable;
-import basic.TextConstants;
 import symbols.NaturalNumber;
 
 public class TreeVisitor {

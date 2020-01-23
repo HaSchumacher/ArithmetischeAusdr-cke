@@ -148,6 +148,11 @@ public class View extends JFrame {
 		this.tree.setModel(tree_model);
 		this.scrollPane.setViewportView(tree);
 	}
-
+	public void disableEvalButton() {
+		this.btnEvaluateButton.setEnabled(false);
+	}
+	public void enableEvalButton() {
+		this.btnEvaluateButton.setEnabled(true);
+	}
 	
 }

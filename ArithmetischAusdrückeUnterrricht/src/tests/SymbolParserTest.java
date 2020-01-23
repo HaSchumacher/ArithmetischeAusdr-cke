@@ -51,13 +51,16 @@ class SymbolParserTest {
 		assertEquals(5, new ExpressionParserProxy().toExpression(new Scanner().toSymbolSequence ("(10/2)")).evaluate());
 	}
 	@Test
-	void test9() throws SymbolParserException {
-		
-		assertEquals(new SymbolParserException(), new ExpressionParserProxy().toExpression(new Scanner().toSymbolSequence ("5)))")).evaluate());
+	void test9() {
+		assertThrows(SymbolParserException.class , () -> new ExpressionParserProxy().toExpression(new Scanner().toSymbolSequence ("5)))")).evaluate());
 	}
 	 @Test
-	 void test10() throws SymbolParserException{
-		 assertEquals(new SymbolParserException(), new ExpressionParserProxy().toExpression(new Scanner().toSymbolSequence("15+")).evaluate());
+	 void test10() {
+		 assertThrows(SymbolParserException.class , () -> new ExpressionParserProxy().toExpression(new Scanner().toSymbolSequence("15+")).evaluate());
+	 }
+	 @Test
+	 void test11() {
+		 assertThrows(SymbolParserException.class, () -> new ExpressionParserProxy().toExpression(new Scanner().toSymbolSequence("12++")).evaluate());
 	 }
 
 }

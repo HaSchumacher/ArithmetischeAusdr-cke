@@ -10,7 +10,7 @@ import scanner.Scanner;
 /**
  * Represents main use case of Arithmetic-Expression-Application
  */
-public class Facade extends Observable{
+public class Facade extends Observable implements FacadeState{
 /**
  * Compiles the <userEnteredExpression> into syntax tree
  * Throws Exception, if syntax is incorrect
@@ -18,6 +18,8 @@ public class Facade extends Observable{
 	private String userEnteredExpression;
 	private Expression expr;
 	private Integer evaluatetexpr;
+	private FacadeState state;
+	
 	public Expression getExpr() {
 		return expr;
 	}
@@ -28,6 +30,8 @@ public class Facade extends Observable{
 	public Facade () {
 		setUserEnteredExpression("");
 		setEvaluatetexpr(0);
+		this.setState(new uncheckedState());
+		
 	}
 	public Expression createExpression(String userEnteredExpression) throws SymbolParserException{
 		Scanner scanner = new Scanner();
@@ -64,5 +68,24 @@ public class Facade extends Observable{
 	public void setEvaluatetexpr(Integer evaluatetexpr) {
 		this.evaluatetexpr = evaluatetexpr;
 	}
+
+	public FacadeState getState() {
+		return state;
+	}
+
+	public void setState(FacadeState state) {
+		this.state = state;
+	}
+
+	
+	@Override
+	public boolean checked() {
+		return false;
+		// TODO Auto-generated method stub
+		
+	}
+
+	
+	
 	
 }

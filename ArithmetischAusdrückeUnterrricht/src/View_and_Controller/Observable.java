@@ -3,8 +3,6 @@ package View_and_Controller;
 import java.util.ArrayList;
 import java.util.List;
 
-import Expression.Expression;
-
 public abstract class Observable {
 	private List<Observer> observers;
 	public Observable() {
@@ -19,6 +17,7 @@ public abstract class Observable {
 	public void notifyObservers() {
 		for (Observer current: observers) current.update();
 	}
+	
 	public void excnotify(Exception e) {
 		for (Observer current: observers) current.update(e);
 	}

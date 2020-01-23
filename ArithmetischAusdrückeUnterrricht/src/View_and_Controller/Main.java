@@ -11,6 +11,6 @@ public class Main {
 		facade.register(c1);
 		Controller c2 = new Controller(view2, facade);
 		facade.register(c2);
-			
+		
 	}
 }
